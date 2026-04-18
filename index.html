@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>André & Brendha 💍</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c8778a;
+    --rose-light: #f2d5db;
+    --rose-pale: #fdf0f2;
+    --gold: #c9a96e;
+    --gold-light: #e8d5b0;
+    --cream: #faf6f1;
+    --ivory: #fffdf9;
+    --brown-soft: #6b4c4c;
+    --text-dark: #3a2a2a;
+    --text-mid: #7a5c5c;
+    --text-light: #b89090;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--ivory);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ======= PARTICLES ======= */
+  #particles-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ======= HERO ======= */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(160deg, #1a0a0a 0%, #3d1a1a 30%, #6b3030 60%, #c8778a 100%);
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200,119,138,0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 80% at 20% 80%, rgba(201,169,110,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 80% 20%, rgba(255,200,200,0.1) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    animation: heroReveal 2s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes heroReveal {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-date {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+    letter-spacing: 0.4em;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+
+  .hero-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 12vw, 9rem);
+    font-weight: 300;
+    line-height: 0.9;
+    color: #fff;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 60px rgba(200,119,138,0.5), 0 4px 30px rgba(0,0,0,0.4);
+  }
+
+  .hero-names span {
+    display: block;
+    font-style: italic;
+    color: var(--gold-light);
+    font-size: 0.45em;
+    letter-spacing: 0.05em;
+    margin: 0.3em 0;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-style: italic;
+    color: rgba(255,255,255,0.75);
+    margin-top: 2rem;
+    letter-spacing: 0.05em;
+    max-width: 480px;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    margin-top: 3rem;
+    padding: 1rem 2.5rem;
+    border: 1px solid rgba(201,169,110,0.6);
+    border-radius: 60px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--gold-light);
+    text-decoration: none;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(8px);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  .hero-btn:hover {
+    background: rgba(201,169,110,0.15);
+    border-color: var(--gold-light);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,169,110,0.2);
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0); }
+    50% { box-shadow: 0 0 20px 4px rgba(201,169,110,0.15); }
+  }
+
+  /* ======= COUNTER ======= */
+  .counter-bar {
+    position: relative;
+    z-index: 2;
+    margin-top: 4rem;
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .counter-item {
+    text-align: center;
+  }
+
+  .counter-number {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .counter-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.5);
+    margin-top: 0.3rem;
+    text-transform: uppercase;
+  }
+
+  .counter-divider {
+    color: rgba(201,169,110,0.3);
+    font-size: 2rem;
+    align-self: center;
+  }
+
+  /* ======= SECTION BASE ======= */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    color: var(--rose);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-eyebrow::before, .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rose-light));
+  }
+
+  .section-eyebrow::after {
+    background: linear-gradient(90deg, var(--rose-light), transparent);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .section-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-mid);
+    line-height: 1.85;
+  }
+
+  /* ======= ORNAMENT ======= */
+  .ornament {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.5rem;
+    margin: 1.5rem 0;
+    opacity: 0.5;
+    letter-spacing: 0.5rem;
+  }
+
+  /* ======= TIMELINE ======= */
+  #historia { background: var(--cream); }
+
+  .timeline {
+    position: relative;
+    margin-top: 4rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--rose-light) 10%, var(--rose-light) 90%, transparent);
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    align-items: flex-start;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+  .timeline-item:nth-child(even) {
+    text-align: left;
+  }
+
+  .timeline-content {
+    flex: 1;
+    padding: 1.8rem 2rem;
+    background: var(--ivory);
+    border-radius: 2px;
+    border: 1px solid var(--rose-light);
+    position: relative;
+  }
+
+  .timeline-content::after {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: var(--rose-light);
+    border: 2px solid var(--rose);
+    border-radius: 50%;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-content::after {
+    left: -2.65rem;
+  }
+
+  .timeline-item:nth-child(even) .timeline-content::after {
+    right: -2.65rem;
+  }
+
+  .timeline-date {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  .timeline-spacer {
+    flex: 1;
+  }
+
+  /* ======= PHOTO GALLERY ======= */
+  #momentos {
+    background: var(--text-dark);
+    overflow: hidden;
+  }
+
+  #momentos .section-title {
+    color: var(--ivory);
+  }
+
+  #momentos .section-body {
+    color: rgba(255,255,255,0.55);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    margin-top: 3rem;
+  }
+
+  .gallery-item {
+    aspect-ratio: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    background: #2a1818;
+    cursor: pointer;
+  }
+
+  .gallery-item.tall {
+    grid-row: span 2;
+    aspect-ratio: unset;
+  }
+
+  .gallery-item.wide {
+    grid-column: span 2;
+    aspect-ratio: 2/1;
+  }
+
+  .gallery-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2a1818 0%, #3d2020 50%, #2a1818 100%);
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .gallery-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    opacity: 0.5;
+  }
+
+  .gallery-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  .gallery-item:hover .gallery-placeholder {
+    background: linear-gradient(135deg, #3d2020 0%, #5a2a2a 50%, #3d2020 100%);
+    transition: background 0.4s ease;
+  }
+
+  /* ======= MESSAGE ======= */
+  #mensagem {
+    background: linear-gradient(160deg, var(--ivory) 0%, #fce8ed 50%, var(--ivory) 100%);
+    text-align: center;
+  }
+
+  .message-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-style: italic;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    position: relative;
+    padding: 2rem 2.5rem;
+  }
+
+  .message-quote::before {
+    content: '\201C';
+    font-size: 8rem;
+    color: var(--rose-light);
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1;
+  }
+
+  .message-letter {
+    background: var(--ivory);
+    border: 1px solid var(--rose-light);
+    border-radius: 2px;
+    padding: 3rem 3.5rem;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 20px 60px rgba(200,119,138,0.08);
+    position: relative;
+  }
+
+  .message-letter::before {
+    content: '';
+    position: absolute;
+    top: 0.6rem; left: 0.6rem; right: 0.6rem; bottom: 0.6rem;
+    border: 1px solid rgba(200,119,138,0.12);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+
+  .letter-to {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--rose);
+    margin-bottom: 1.5rem;
+  }
+
+  .letter-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text-mid);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .letter-sig {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    text-align: right;
+  }
+
+  /* ======= MUSIC ======= */
+  .music-player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .music-btn {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: 1px solid var(--rose-light);
+    background: var(--ivory);
+    color: var(--rose);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(200,119,138,0.1);
+  }
+
+  .music-btn:hover {
+    background: var(--rose);
+    color: #fff;
+    border-color: var(--rose);
+    transform: scale(1.08);
+  }
+
+  .music-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+
+  /* ======= PROPOSAL ======= */
+  #pedido {
+    background: linear-gradient(180deg, #1a0505 0%, #2d0d0d 40%, #1a0505 100%);
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #pedido .section-eyebrow {
+    color: var(--gold);
+  }
+
+  #pedido .section-eyebrow::before {
+    background: linear-gradient(90deg, transparent, rgba(201,169,110,0.3));
+  }
+
+  #pedido .section-eyebrow::after {
+    background: linear-gradient(90deg, rgba(201,169,110,0.3), transparent);
+  }
+
+  .ring-icon {
+    font-size: 4.5rem;
+    display: block;
+    margin: 0 auto 1.5rem;
+    animation: ringFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(201,169,110,0.4));
+  }
+
+  @keyframes ringFloat {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+  }
+
+  .proposal-question {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 40px rgba(200,119,138,0.4);
+  }
+
+  .proposal-question em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .proposal-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 3.5rem;
+  }
+
+  .proposal-btns {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-yes {
+    padding: 1.1rem 2.8rem;
+    border: none;
+    border-radius: 60px;
+    background: linear-gradient(135deg, var(--rose) 0%, #b05070 100%);
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 30px rgba(200,119,138,0.35);
+  }
+
+  .btn-yes:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 14px 40px rgba(200,119,138,0.5);
+  }
+
+  .btn-yes2 {
+    padding: 1.1rem 2.8rem;
+    border: 1px solid rgba(201,169,110,0.5);
+    border-radius: 60px;
+    background: rgba(201,169,110,0.06);
+    color: var(--gold-light);
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  .btn-yes2:hover {
+    background: rgba(201,169,110,0.15);
+    border-color: var(--gold-light);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(201,169,110,0.2);
+  }
+
+  /* ======= CELEBRATION ======= */
+  #celebration {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,5,5,0.95);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  #celebration.show {
+    display: flex;
+    animation: celebFade 0.8s ease forwards;
+  }
+
+  @keyframes celebFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .celeb-icon {
+    font-size: 6rem;
+    animation: celebBounce 0.6s ease 0.3s both;
+  }
+
+  @keyframes celebBounce {
+    0% { transform: scale(0) rotate(-15deg); opacity: 0; }
+    70% { transform: scale(1.15) rotate(5deg); }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+  }
+
+  .celeb-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 300;
+    color: #fff;
+    margin-top: 1.5rem;
+    animation: slideUp 0.8s ease 0.5s both;
+  }
+
+  .celeb-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: var(--gold-light);
+    margin-top: 0.8rem;
+    animation: slideUp 0.8s ease 0.7s both;
+  }
+
+  .celeb-close {
+    margin-top: 3rem;
+    padding: 0.8rem 2rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+    animation: slideUp 0.8s ease 0.9s both;
+  }
+
+  .celeb-close:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.4);
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ======= HEARTS RAIN ======= */
+  .heart-rain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .heart-particle {
+    position: absolute;
+    top: -2rem;
+    font-size: 1.5rem;
+    animation: heartFall linear forwards;
+    opacity: 0.85;
+  }
+
+  @keyframes heartFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ======= SCROLL REVEAL ======= */
+  .reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: all 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ======= DIVIDER ======= */
+  .divider {
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--rose-light);
+    font-size: 1.2rem;
+    letter-spacing: 0.6rem;
+  }
+
+  /* ======= FOOTER ======= */
+  footer {
+    background: var(--text-dark);
+    text-align: center;
+    padding: 3rem 2rem;
+    color: rgba(255,255,255,0.25);
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+  }
+
+  /* ======= RESPONSIVE ======= */
+  @media (max-width: 640px) {
+    .timeline::before { left: 1.2rem; }
+    .timeline-item, .timeline-item:nth-child(odd) {
+      flex-direction: column;
+      text-align: left;
+    }
+    .timeline-spacer { display: none; }
+    .timeline-content::after,
+    .timeline-item:nth-child(odd) .timeline-content::after {
+      left: -2.6rem;
+      right: auto;
+    }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-item.tall { grid-row: span 1; aspect-ratio: 1; }
+    .message-letter { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particles-canvas"></canvas>
+
+<!-- ======= HERO ======= -->
+<section id="hero">
+  <div class="hero-content">
+    <p class="hero-date">24 · 05 · 2024</p>
+    <h1 class="hero-names">
+      André
+      <span>&</span>
+      Brendha
+    </h1>
+    <p class="hero-subtitle">Nossa história começou em 24 de maio de 2024… e cada dia desde então foi um presente.</p>
+    <a class="hero-btn" href="#historia">Veja nossa história ↓</a>
+  </div>
+
+  <div class="counter-bar">
+    <div class="counter-item">
+      <div class="counter-number" id="cnt-years">0</div>
+      <div class="counter-label">Anos</div>
+    </div>
+    <div class="counter-divider">·</div>
+    <div class="counter-item">
+      <div class="counter-number" id="cnt-months">0</div>
+      <div class="counter-label">Meses</div>
+    </div>
+    <div class="counter-divider">·</div>
+    <div class="counter-item">
+      <div class="counter-number" id="cnt-days">0</div>
+      <div class="counter-label">Dias</div>
+    </div>
+    <div class="counter-divider">·</div>
+    <div class="counter-item">
+      <div class="counter-number" id="cnt-hours">0</div>
+      <div class="counter-label">Horas</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= HISTÓRIA ======= -->
+<section id="historia">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Nossa História</div>
+    <h2 class="section-title reveal">Dois mundos que <em>se encontraram</em></h2>
+    <p class="section-body reveal">Às vezes o universo conspira de formas que a gente nem imagina. Em 24 de maio de 2024, algo especial começou — um sorriso, um olhar, uma conexão que mudaria tudo.</p>
+
+    <div class="ornament reveal">✦ ✦ ✦</div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-date">24 MAI 2024</div>
+          <div class="timeline-title">O primeiro encontro</div>
+          <div class="timeline-text">Foi nesse dia que tudo começou. Um encontro que parecia pequeno, mas que carregava o peso de um futuro inteiro. O mundo parou por um instante.</div>
+        </div>
+        <div class="timeline-spacer"></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-spacer"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Os primeiros dias</div>
+          <div class="timeline-title">Descobrindo um ao outro</div>
+          <div class="timeline-text">Conversas que se estendiam pela madrugada. Risadas que nem sabíamos que existiam dentro da gente. A leveza de estar perto da pessoa certa.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-date">Semanas depois</div>
+          <div class="timeline-title">A certeza que cresceu</div>
+          <div class="timeline-text">Cada dia com você confirmava o que o coração já sabia: que queria repetir esse dia para sempre. Que ao seu lado, o mundo ficava mais bonito.</div>
+        </div>
+        <div class="timeline-spacer"></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-spacer"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Hoje</div>
+          <div class="timeline-title">Mais apaixonado do que nunca</div>
+          <div class="timeline-text">Depois de tudo que vivemos juntos, chego aqui com o coração transbordando de amor, gratidão e uma certeza inabalável sobre o nosso futuro.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======= MOMENTOS ======= -->
+<section id="momentos">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal" style="--rose: rgba(200,119,138,0.8);">Momentos Especiais</div>
+    <h2 class="section-title reveal">Cada <em style="color:var(--rose)">lembrança</em>, um tesouro</h2>
+    <p class="section-body reveal">Cada foto que tiramos juntos é uma prova de que estávamos exatamente onde deveríamos estar. Adicione aqui os seus momentos mais preciosos.</p>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-item tall">
+        <div class="gallery-placeholder">
+          <div class="gallery-icon">📷</div>
+          <div class="gallery-caption">Adicione sua foto favorita aqui</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <div class="gallery-icon">🌅</div>
+          <div class="gallery-caption">Aquele pôr do sol inesquecível</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <div class="gallery-icon">🌹</div>
+          <div class="gallery-caption">O dia das flores</div>
+        </div>
+      </div>
+      <div class="gallery-item wide">
+        <div class="gallery-placeholder">
+          <div class="gallery-icon">✨</div>
+          <div class="gallery-caption">O melhor dia de todos</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <div class="gallery-icon">☕</div>
+          <div class="gallery-caption">Nossa primeira xícara de café</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <div class="gallery-icon">🌙</div>
+          <div class="gallery-caption">Noites que nunca esquecerei</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center; margin-top:2rem; font-family:'Cormorant Garamond',serif; font-style:italic; color:rgba(255,255,255,0.3); font-size:0.9rem;">Substitua os ícones pelas suas fotos reais ❤️</p>
+  </div>
+</section>
+
+<!-- ======= MENSAGEM ======= -->
+<section id="mensagem">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-eyebrow reveal">Mensagem Especial</div>
+    <h2 class="section-title reveal">Do fundo do <em>meu coração</em></h2>
+
+    <div class="message-quote reveal">
+      Você transformou minha vida em algo que eu nunca soube que precisava, mas que nunca mais conseguiria imaginar sem.
+    </div>
+
+    <div class="message-letter reveal">
+      <div class="letter-to">Para Brendha,</div>
+      <div class="letter-body">
+        Desde o primeiro dia em que te vi, soube que havia algo diferente em você. Uma luz que não conseguia ignorar, um sorriso que virava e revirava o meu dia inteiro de cabeça para baixo — do melhor jeito possível.
+        <br><br>
+        Você me ensinou que o amor de verdade não é perfeito, mas é real. É acordar sabendo que a pessoa certa está ao seu lado. É rir das mesmas bobagens, é se apoiar nos momentos difíceis, é crescer junto sem perder quem você é.
+        <br><br>
+        Eu te amo por quem você é, com todas as suas histórias, suas alegrias e seus sonhos. E é exatamente por isso que hoje estou aqui, com o coração na mão, querendo te fazer uma pergunta que vai mudar a nossa história para sempre.
+      </div>
+      <div class="letter-sig">— Com todo o meu amor, André</div>
+    </div>
+
+    <div class="music-player reveal">
+      <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Tocar música">▶</button>
+      <span class="music-label">Nossa música • toque para ouvir</span>
+    </div>
+
+    <audio id="bgMusic" loop>
+      <!-- Adicione aqui o src da sua música: <source src="musica.mp3" type="audio/mpeg"> -->
+    </audio>
+  </div>
+</section>
+
+<!-- ======= PEDIDO ======= -->
+<section id="pedido">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">O Momento</div>
+    <span class="ring-icon">💍</span>
+    <h2 class="proposal-question reveal">
+      <em>Brendha</em>,<br>
+      você aceita se casar comigo?
+    </h2>
+    <p class="proposal-subtitle reveal">Quero construir cada próximo capítulo ao seu lado.</p>
+    <div class="proposal-btns reveal">
+      <button class="btn-yes" onclick="celebrate('sim')">Sim ❤️</button>
+      <button class="btn-yes2" onclick="celebrate('claro')">Claro que sim 💍</button>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CELEBRATION OVERLAY ======= -->
+<div id="celebration">
+  <div class="celeb-icon">💍</div>
+  <h2 class="celeb-title" id="celebTitle">Ela disse SIM! 🥂</h2>
+  <p class="celeb-sub" id="celebSub">André & Brendha — para sempre ❤️</p>
+  <button class="celeb-close" onclick="closeCeleb()">voltar para nossa história</button>
+</div>
+<div class="heart-rain" id="heartRain"></div>
+
+<!-- ======= FOOTER ======= -->
+<footer>
+  <p>André & Brendha · 24.05.2024 · para sempre</p>
+</footer>
+
+<script>
+// ======= PARTICLES =======
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+function createParticle() {
+  return {
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.5 + 0.3,
+    alpha: Math.random() * 0.4 + 0.05,
+    dx: (Math.random() - 0.5) * 0.2,
+    dy: -Math.random() * 0.3 - 0.1,
+    pulse: Math.random() * Math.PI * 2
+  };
+}
+
+for (let i = 0; i < 120; i++) particles.push(createParticle());
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach((p, i) => {
+    p.pulse += 0.02;
+    const a = p.alpha * (0.7 + 0.3 * Math.sin(p.pulse));
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 220, 200, ${a})`;
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.y < -5) { particles[i] = createParticle(); particles[i].y = canvas.height + 5; }
+    if (p.x < -5) p.x = canvas.width + 5;
+    if (p.x > canvas.width + 5) p.x = -5;
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ======= COUNTER =======
+function updateCounter() {
+  const start = new Date('2024-05-24T00:00:00');
+  const now = new Date();
+  let diff = now - start;
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  const totalHours = Math.floor(totalMinutes / 60);
+  const totalDays = Math.floor(totalHours / 24);
+
+  let years = 0, months = 0;
+  let d = new Date(start);
+  while (true) {
+    let next = new Date(d);
+    next.setFullYear(next.getFullYear() + 1);
+    if (next <= now) { years++; d = next; } else break;
+  }
+  while (true) {
+    let next = new Date(d);
+    next.setMonth(next.getMonth() + 1);
+    if (next <= now) { months++; d = next; } else break;
+  }
+  const days = Math.floor((now - d) / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((now - d) / (1000 * 60 * 60)) % 24;
+
+  document.getElementById('cnt-years').textContent = years;
+  document.getElementById('cnt-months').textContent = months;
+  document.getElementById('cnt-days').textContent = days;
+  document.getElementById('cnt-hours').textContent = String(hours).padStart(2, '0');
+}
+updateCounter();
+setInterval(updateCounter, 60000);
+
+// ======= SCROLL REVEAL =======
+const revealEls = document.querySelectorAll('.reveal, .timeline-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => observer.observe(el));
+
+// ======= MUSIC =======
+let playing = false;
+function toggleMusic() {
+  const audio = document.getElementById('bgMusic');
+  const btn = document.getElementById('musicBtn');
+  if (!audio.src && !audio.querySelector('source')) {
+    btn.textContent = '♪';
+    setTimeout(() => btn.textContent = '▶', 1000);
+    return;
+  }
+  if (playing) {
+    audio.pause();
+    btn.textContent = '▶';
+    playing = false;
+  } else {
+    audio.play().catch(() => {});
+    btn.textContent = '⏸';
+    playing = true;
+  }
+}
+
+// ======= HEARTS RAIN =======
+function spawnHearts() {
+  const container = document.getElementById('heartRain');
+  const hearts = ['❤️','💕','💗','💖','💝','🌹','✨','💍'];
+  for (let i = 0; i < 60; i++) {
+    setTimeout(() => {
+      const h = document.createElement('div');
+      h.className = 'heart-particle';
+      h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.fontSize = (Math.random() * 1.5 + 0.8) + 'rem';
+      const dur = Math.random() * 3 + 2;
+      h.style.animationDuration = dur + 's';
+      h.style.animationDelay = (Math.random() * 2) + 's';
+      container.appendChild(h);
+      setTimeout(() => h.remove(), (dur + 3) * 1000);
+    }, i * 80);
+  }
+}
+
+// ======= CELEBRATE =======
+function celebrate(type) {
+  const overlay = document.getElementById('celebration');
+  const title = document.getElementById('celebTitle');
+  const sub = document.getElementById('celebSub');
+
+  if (type === 'claro') {
+    title.innerHTML = 'Claro que sim! 💍🥂';
+    sub.innerHTML = 'André & Brendha — noivos para sempre! ❤️';
+  } else {
+    title.innerHTML = 'Ela disse SIM! 💕';
+    sub.innerHTML = 'André & Brendha — para sempre juntos ❤️';
+  }
+
+  overlay.classList.add('show');
+  spawnHearts();
+
+  // start confetti
+  let confettiTimer = setInterval(spawnHearts, 4000);
+  overlay._confetti = confettiTimer;
+}
+
+function closeCeleb() {
+  const overlay = document.getElementById('celebration');
+  overlay.classList.remove('show');
+  if (overlay._confetti) clearInterval(overlay._confetti);
+}
+</script>
+</body>
+</html>
