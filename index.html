@@ -387,6 +387,54 @@
     aspect-ratio: 2/1;
   }
 
+  .gallery-photo {
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease;
+    position: absolute;
+    inset: 0;
+  }
+
+  .gallery-item:hover .gallery-photo {
+    transform: scale(1.05);
+  }
+
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.04);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,5,5,0.75) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.2rem 1rem;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-caption-hover {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+  }
+
   .gallery-placeholder {
     width: 100%; height: 100%;
     display: flex;
@@ -410,11 +458,6 @@
     font-size: 0.95rem;
     color: rgba(255,255,255,0.5);
     line-height: 1.5;
-  }
-
-  .gallery-item:hover .gallery-placeholder {
-    background: linear-gradient(135deg, #3d2020 0%, #5a2a2a 50%, #3d2020 100%);
-    transition: background 0.4s ease;
   }
 
   /* ======= MESSAGE ======= */
@@ -552,26 +595,13 @@
     background: linear-gradient(90deg, rgba(201,169,110,0.3), transparent);
   }
 
-  .ring-icon {
-    font-size: 4.5rem;
-    display: block;
-    margin: 0 auto 1.5rem;
-    animation: ringFloat 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 20px rgba(201,169,110,0.4));
-  }
-
-  @keyframes ringFloat {
-    0%, 100% { transform: translateY(0) rotate(-5deg); }
-    50% { transform: translateY(-10px) rotate(5deg); }
-  }
-
   .proposal-question {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2rem, 5vw, 3.8rem);
     font-weight: 300;
     color: #fff;
     line-height: 1.2;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     text-shadow: 0 0 40px rgba(200,119,138,0.4);
   }
 
@@ -583,9 +613,17 @@
   .proposal-subtitle {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 3.5rem;
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 1.5rem;
+  }
+
+  .proposal-ornament {
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 0.7rem;
+    opacity: 0.45;
+    margin-bottom: 3rem;
   }
 
   .proposal-btns {
@@ -595,43 +633,75 @@
     flex-wrap: wrap;
   }
 
+  /* Botões elegantes com borda dourada e arredondados */
   .btn-yes {
-    padding: 1.1rem 2.8rem;
-    border: none;
-    border-radius: 60px;
-    background: linear-gradient(135deg, var(--rose) 0%, #b05070 100%);
-    color: #fff;
+    padding: 1rem 3rem;
+    border: 1px solid var(--gold);
+    border-radius: 50px;
+    background: rgba(201,169,110,0.07);
+    color: var(--gold-light);
     font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
     cursor: pointer;
     transition: all 0.4s ease;
-    box-shadow: 0 8px 30px rgba(200,119,138,0.35);
+    position: relative;
+    overflow: hidden;
   }
 
+  .btn-yes::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(201,169,110,0.2), rgba(201,169,110,0.08));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .btn-yes:hover::before { opacity: 1; }
+
   .btn-yes:hover {
-    transform: translateY(-4px) scale(1.04);
-    box-shadow: 0 14px 40px rgba(200,119,138,0.5);
+    color: #fff;
+    border-color: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px rgba(201,169,110,0.25);
   }
 
   .btn-yes2 {
-    padding: 1.1rem 2.8rem;
-    border: 1px solid rgba(201,169,110,0.5);
-    border-radius: 60px;
-    background: rgba(201,169,110,0.06);
-    color: var(--gold-light);
+    padding: 1rem 3rem;
+    border: 1px solid rgba(200,119,138,0.6);
+    border-radius: 50px;
+    background: rgba(200,119,138,0.07);
+    color: var(--rose-light);
     font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
     cursor: pointer;
     transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
   }
 
+  .btn-yes2::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(200,119,138,0.18), rgba(200,119,138,0.06));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .btn-yes2:hover::before { opacity: 1; }
+
   .btn-yes2:hover {
-    background: rgba(201,169,110,0.15);
-    border-color: var(--gold-light);
-    transform: translateY(-4px);
-    box-shadow: 0 14px 40px rgba(201,169,110,0.2);
+    color: #fff;
+    border-color: var(--rose-light);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(200,119,138,0.2), inset 0 0 0 1px rgba(200,119,138,0.25);
   }
 
   /* ======= CELEBRATION ======= */
@@ -707,9 +777,20 @@
     border-color: rgba(255,255,255,0.4);
   }
 
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  .celeb-love {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    font-style: italic;
+    color: var(--gold-light);
+    margin-top: 1.5rem;
+    letter-spacing: 0.05em;
+    animation: loveAppear 1s ease 1s both;
+    text-shadow: 0 0 30px rgba(201,169,110,0.4);
+  }
+
+  @keyframes loveAppear {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
   }
 
   /* ======= HEARTS RAIN ======= */
@@ -885,44 +966,26 @@
 
     <div class="gallery-grid reveal">
       <div class="gallery-item tall">
-        <div class="gallery-placeholder">
-          <div class="gallery-icon">📷</div>
-          <div class="gallery-caption">Adicione sua foto favorita aqui</div>
-        </div>
+        <div class="gallery-photo" style="background-image:url('https://i.ibb.co/C5dWBFpm/Ilha-bela.jpg')"></div>
+        <div class="gallery-overlay"><span class="gallery-caption-hover">Ilhabela 🌊</span></div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <div class="gallery-icon">🌅</div>
-          <div class="gallery-caption">Aquele pôr do sol inesquecível</div>
-        </div>
+        <div class="gallery-photo" style="background-image:url('https://i.ibb.co/My2QCh6G/hopi-hari.jpg')"></div>
+        <div class="gallery-overlay"><span class="gallery-caption-hover">Hopi Hari 🎢</span></div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <div class="gallery-icon">🌹</div>
-          <div class="gallery-caption">O dia das flores</div>
-        </div>
+        <div class="gallery-photo" style="background-image:url('https://i.ibb.co/B2sWsB7S/ilha-bela-2.jpg')"></div>
+        <div class="gallery-overlay"><span class="gallery-caption-hover">Minha eterna tela de bloqueio 🔒❤️</span></div>
       </div>
       <div class="gallery-item wide">
-        <div class="gallery-placeholder">
-          <div class="gallery-icon">✨</div>
-          <div class="gallery-caption">O melhor dia de todos</div>
-        </div>
+        <div class="gallery-photo" style="background-image:url('https://i.ibb.co/HfcbYh80/Primeira-foto.jpg')"></div>
+        <div class="gallery-overlay"><span class="gallery-caption-hover">Nossa primeira foto juntos 📷</span></div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <div class="gallery-icon">☕</div>
-          <div class="gallery-caption">Nossa primeira xícara de café</div>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <div class="gallery-icon">🌙</div>
-          <div class="gallery-caption">Noites que nunca esquecerei</div>
-        </div>
+        <div class="gallery-photo" style="background-image:url('https://i.ibb.co/wrdqpzN0/sao-bento.jpg')"></div>
+        <div class="gallery-overlay"><span class="gallery-caption-hover">São Bento 🌿</span></div>
       </div>
     </div>
-
-    <p style="text-align:center; margin-top:2rem; font-family:'Cormorant Garamond',serif; font-style:italic; color:rgba(255,255,255,0.3); font-size:0.9rem;">Substitua os ícones pelas suas fotos reais ❤️</p>
   </div>
 </section>
 
@@ -953,22 +1016,29 @@
       <span class="music-label">Nossa música • toque para ouvir</span>
     </div>
 
-    <audio id="bgMusic" loop>
-      <!-- Adicione aqui o src da sua música: <source src="musica.mp3" type="audio/mpeg"> -->
-    </audio>
+    <div id="ytWrapper" style="display:none;">
+      <iframe id="ytPlayer"
+        width="1" height="1"
+        src="https://www.youtube.com/embed/-HAbOWi5rD8?enablejsapi=1&autoplay=0&loop=1&playlist=-HAbOWi5rD8"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        style="position:absolute;opacity:0;pointer-events:none;">
+      </iframe>
+    </div>
   </div>
 </section>
 
 <!-- ======= PEDIDO ======= -->
 <section id="pedido">
-  <div class="section-inner">
+  <div class="section-inner" style="text-align:center;">
     <div class="section-eyebrow reveal">O Momento</div>
-    <span class="ring-icon">💍</span>
     <h2 class="proposal-question reveal">
       <em>Brendha</em>,<br>
       você aceita se casar comigo?
     </h2>
     <p class="proposal-subtitle reveal">Quero construir cada próximo capítulo ao seu lado.</p>
+    <div class="proposal-ornament reveal">✦ ✦ ✦</div>
     <div class="proposal-btns reveal">
       <button class="btn-yes" onclick="celebrate('sim')">Sim ❤️</button>
       <button class="btn-yes2" onclick="celebrate('claro')">Claro que sim 💍</button>
@@ -981,6 +1051,7 @@
   <div class="celeb-icon">💍</div>
   <h2 class="celeb-title" id="celebTitle">Ela disse SIM! 🥂</h2>
   <p class="celeb-sub" id="celebSub">André & Brendha — para sempre ❤️</p>
+  <div class="celeb-love">TE AMOOOOOOOOO PARA SEMPRE</div>
   <button class="celeb-close" onclick="closeCeleb()">voltar para nossa história</button>
 </div>
 <div class="heart-rain" id="heartRain"></div>
@@ -1079,22 +1150,43 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 revealEls.forEach(el => observer.observe(el));
 
-// ======= MUSIC =======
+// ======= MUSIC (YouTube) =======
 let playing = false;
+let ytReady = false;
+let ytPlayerObj = null;
+
+function onYouTubeIframeAPIReady() {
+  ytPlayerObj = new YT.Player('ytPlayer', {
+    events: {
+      'onReady': () => { ytReady = true; }
+    }
+  });
+}
+
+// Load YouTube IFrame API
+(function() {
+  const tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+})();
+
 function toggleMusic() {
-  const audio = document.getElementById('bgMusic');
   const btn = document.getElementById('musicBtn');
-  if (!audio.src && !audio.querySelector('source')) {
+  const wrapper = document.getElementById('ytWrapper');
+  wrapper.style.display = 'block';
+
+  if (!ytReady || !ytPlayerObj) {
     btn.textContent = '♪';
-    setTimeout(() => btn.textContent = '▶', 1000);
+    setTimeout(() => btn.textContent = '▶', 1200);
     return;
   }
+
   if (playing) {
-    audio.pause();
+    ytPlayerObj.pauseVideo();
     btn.textContent = '▶';
     playing = false;
   } else {
-    audio.play().catch(() => {});
+    ytPlayerObj.playVideo();
     btn.textContent = '⏸';
     playing = true;
   }
